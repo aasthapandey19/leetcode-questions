@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int singleNumber=0;
+        for(auto x:nums)singleNumber=singleNumber^x;
+        return singleNumber;
+    }
+};
+/*
+sort , find elem not equal to neighbors both - nlogn n space
+map , freq of not 2 -o(n+maplen)=n, sp=n
+do xor , each double nullifies , single num remains- o(n), O(1) space
+
+
+*/
