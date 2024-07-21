@@ -1,0 +1,19 @@
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        if(s.length()!=t.length()) return 0;
+        vector<int>map(26);
+        for(auto x:s)map[x-'a']++;
+        for(auto x:t) map[x-'a']--;
+        for(auto x:map) if(x) return false;
+        return true;
+    }
+};
+/*
+ t& s both ar estrings
+ - len of t ==len of s ?
+ -any bound on type of chars?
+ // if ascii then unordered map  access o(1)
+ lowercase then vector of size 26
+
+*/
