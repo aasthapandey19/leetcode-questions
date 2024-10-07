@@ -1,0 +1,37 @@
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        int first=m-1;
+        int second=n-1;
+        int baseIndex=n+m-1;
+        while(first>-1 && second>-1){
+            if(nums1[first]>=nums2[second]) 
+            swap(nums1[first--], nums1[baseIndex]);
+            else swap(nums2[second--],nums1[baseIndex]);
+            baseIndex--;
+        }
+        while(second>-1)nums1[baseIndex--]=nums2[second--];
+        //only checking for second array as first array already sorted and since second is exhausted , they are automatically in correct [place]
+        return ;
+    }
+};
+/*
+-what kind of integers?
+- already sorted?
+-goal: final array in nums1 ain sorted
+
+- basic
+push all in num1 , sort it 
+- O(m)+ O(n+m log (n+m))   // space for sorting 
+
+-better
+- 2 pointer but extra aarray , then push back in nums1
+-o(m+(n)) // space O(m+n)
+
+-better again  => @ pointer appraoch from back 
+-start from behind of both array , push whatever is greatest 
+-automatically space will be made in first array as elemnts sfrom back are decreasing 
+
+tim=O(n+m) //space np extra 
+
+*/
