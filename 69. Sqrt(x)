@@ -1,0 +1,48 @@
+class Solution {
+public:
+    int mySqrt(int x) {
+        if(x<2) return x;
+        int low=1;
+        int high=x;
+        int mid=0;
+        int answer=0;
+        while(low<=high){
+            mid=low+(high-low)/2;
+            if(mid<=x/mid){
+                answer=mid;
+                low=mid+1;
+            }
+            else high=mid-1;
+        }
+        return answer;
+    }
+};
+/*
+- non negative ? -can be zero
+- sqrt rounded DOWN 
+-no built in 
+
+clarification-
+- nothing below 0;
+- how much long ?
+-return type int ?
+
+brute-> 
+- start from 1 , go to n , do x*x
+tc=O(n + time in multiplication) sc=O(1)
+
+better-> we know in genral , sqrt alwys lies towards the firsgt half when rounded down, except for 1
+tc = o(n/2) 
+
+better -
+- since 1 to n is sorted , we can divide it into two parts and reduce search spacce 
+for eg , we know if 5 is not sqtr of 16 , any greater than 5 wont be 
+do we discard 5->16 like that
+
+- use binary search , check if middle square less than no , save it & move forward , dicarding left half & vice versa
+tc= O(logn) sc=o(1)
+
+
+
+
+*/
