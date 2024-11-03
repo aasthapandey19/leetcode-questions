@@ -1,0 +1,36 @@
+class Solution {
+public:
+    int trailingZeroes(int n) {
+        int count=0;
+        int factor=5;
+        while(n/ factor){
+            count+= n/factor;
+            factor= factor*5;
+        }
+        return count;
+    }
+};
+/*
+
+given-
+- integer 
+-find no of TRAILING zeroes
+
+clarification-
+- what value of int ?
+- can int be zero ?
+- is factorial value within the limits of int
+
+brute -
+calculate the factorial , then put in a string , search from back 
+
+optimized -
+calculate no of pairs of 2 &5 
+since 2 is abundant , 
+count 5 factors
+each five cntributes in 1 zero , so find a way to cont all 5 , 25 , 125 , 625  . stop at 625 as 10^4 will not need more than that factors
+- since the question limits , we can eailty give answer by dividing n with 4 distinct numbers
+but if we scale the inpit , we need a more genralized logarithmic approach
+
+
+*/
