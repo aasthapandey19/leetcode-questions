@@ -1,0 +1,26 @@
+class Solution {
+private:
+    int digsum(int x){
+        int currSum=0;
+        while(x){
+            currSum+= (x%10) *(x%10);
+            x/=10;
+        }
+        return currSum;
+    }
+public:
+    bool isHappy(int n) {
+        unordered_map<int,int>mp;
+        int num=n;
+        while(1){
+            int opNum=digsum(num);
+            if(opNum==1) return true;
+            else {
+                if(mp[opNum]) return false;
+                mp[opNum]++;
+            }
+            num=opNum;
+        }
+        return false;
+    }
+};
