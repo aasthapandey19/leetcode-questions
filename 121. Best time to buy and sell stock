@@ -1,0 +1,41 @@
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        vector<int>minimum;
+        int mini=INT_MAX;
+        int currAns=0;
+        for(int i=0;i<prices.size();++i){
+            mini= min(mini,prices[i]);
+            currAns=max(prices[i]-mini, currAns);
+        }
+        return currAns;
+    }
+};
+/*
+Given -
+arr of price
+today buy , sell future 
+max profit ? shudnt be negative
+eg if sorted in descending order , buy 5 sell 1 not possible , .: it will be zero
+
+contaritj g-
+len of prices?
+element of pricces?
+cant be negative right
+can be same adjacent
+
+brute-
+
+check for every stock to j+1->future 
+onsq  sc 1
+ 
+ better 
+ make an array and store min encountered till now 
+ then from back of array start findind the no that has greatest diff from min
+ eg 
+
+ 7 1 5 3 6 4
+ 7 1 1 1 1 1
+ on time on space
+
+*/
