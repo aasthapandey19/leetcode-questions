@@ -1,0 +1,45 @@
+class Solution {
+public:
+    vector<int> productExceptSelf(vector<int>& nums) {
+        if(nums.size()<2) return  nums;
+        int suff=1;
+        vector<int>result(nums.size(),1);
+        for(int i=1;i<nums.size();++i)
+        result[i]=nums[i-1]*result[i-1];
+        for(int i=nums.size()-2;i>=0;--i)
+        {   suff=suff*nums[i+1];
+            result[i]= suff*result[i];
+         }
+         return result;
+    }
+};
+/*
+clarifications-
+- what eleme ?
+- how many?
+- can zero be ther?
+- can negative nos be ther ?
+-anything on being distinct or diffrent
+
+brute-
+- foe each i , do a full one , without choosing when i==j, 
+ on2 time , sp= o1 
+ - do one time multiyply & divide each one in next itertion above product 
+ 2* ON
+
+ better
+ -
+ make q prefix product array
+ make a suffix product array
+ for each i , multiply prefix i by suffix i
+ on for pref, on for suff, one for each elem
+ 1 1 2 6 
+
+tc= o 3n sp o 2n
+
+improve this by using just 1 suffix array & do prefix otherwise parallely
+
+best-
+take 2 var , pref & suff , make both 1 
+
+*/
