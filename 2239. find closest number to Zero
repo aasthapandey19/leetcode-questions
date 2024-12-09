@@ -1,0 +1,10 @@
+class Solution {
+public:
+    int findClosestNumber(vector<int>& nums) {
+        int minDiff=INT_MAX;
+        for(auto x:nums) minDiff= min(minDiff,abs(x));
+        int largestValue=INT_MIN;
+        for(auto x:nums) if(abs(x)==minDiff) largestValue=max(largestValue,x);
+        return largestValue;
+    }
+};
