@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int xo=0;
+        for(int i=0;i<=nums.size();++i)xo=xo^i;
+        for(auto element:nums)xo=xo^element;
+        return xo;
+        
+    }
+};
+/*
+
+
+one way is map  o(n) O(n)
+other way is sort &check whichever first not on correct index-nlogn +n
+other way to sort & bin search which inedx !=pos if midelem>midIndex its left else right
+
+better since we know 0 to n;
+we make a xo from 0-n
+now xo all elemnts  , every double elemnt will cancel out , remaining will not be paired & will be answer
+we start with 0, even if zero is single it will be spit out*/
